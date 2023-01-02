@@ -26,11 +26,11 @@ RSpec.describe Actor do
       actor_3 = Actor.create!(name: 'Vigo Mortensen', age: 64)
       actor_4 = Actor.create!(name: 'Ian McKellen', age: 83)
       
-      expect(Actor.age_average).to eq 58.25
+      expect(Actor.average_age).to eq 58.25
 
       actor_5 = Actor.create!(name: 'Cate Blanchett', age: 53)
       
-      expect(Actor.age_average).to eq 57.20
+      expect(Actor.average_age).to eq 57.20
     end
   end
 end

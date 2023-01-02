@@ -6,4 +6,6 @@ RSpec.describe Movie do
     it {should have_many :movie_actors}
     it {should have_many :actors}
   end
+
+  
 end

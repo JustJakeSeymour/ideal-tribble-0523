@@ -1,14 +1,35 @@
 require 'rails_helper'
 
 RSpec.describe "Movie Show" do
-  describe "User Story 2" do
-    it "displays the movie row data, and its actors" 
-      # When I visit a movie's show page.
-      # I see the movie's title, creation year, and genre,
+  before(:each) do
+    @studio_1 = Studio.create!(name: 'Universal Studios', location: 'Hollywood')
+    @studio_2 = Studio.create!(name: 'New Line Cinema', location: 'New York City')
 
-      it "lists actors from youngest to oldest, and average age"
-        # and a list of all its actors from youngest to oldest.
-        # And I see the average age of all of the movie's actors
+    @movie_1 = @studio_2.movies.create!(title: 'Lord of the Rings', creation_year: '2000', genre: 'action')
+    @movie_2 = @studio_1.movies.create!(title: 'Despicable Me', creation_year: '2010', genre: 'animation')
+
+    @actor_1 = Actor.create!(name: 'Steve Carell', age: 60)
+    @actor_2 = Actor.create!(name: 'Will Ferell', age: 55)
+    @actor_3 = Actor.create!(name: 'Vigo Mortensen', age: 64)
+    @actor_4 = Actor.create!(name: 'Mike Myers', age: 59)
+    @actor_5 = Actor.create!(name: 'Jeff Goldblum', age: 70)
+    @actor_6 = Actor.create!(name: 'Tom Hanks', age: 66)
+  end
+
+  describe "User Story 2" do
+    it "displays the movie row data, and its actors" do
+      # When I visit a movie's show page.
+      visit "movies/#{@movie_1.id}"
+      # I see the movie's title, creation year, and genre,
+      expect(page).to have_content("Lord of the Rings")
+      expect(page).to have_content("Year: 2000")
+      expect(page).to have_content("Genre: Action")
+    end
+
+    it "lists actors from youngest to oldest, and average age" do
+      # and a list of all its actors from youngest to oldest.
+      # And I see the average age of all of the movie's actors
+    end
   end
 
   describe "Add an Actor to a Movie" do

@@ -52,16 +52,16 @@ RSpec.describe "Movie Show" do
       expect(page).to_not have_content("Jeff Goldblum")
     end
     
-    xit "form to add an actor to the movie" do
-      visit "movies/#{@movie_1.id}"
+    it "form to add an actor to the movie" do
+      visit "/movies/#{@movie_1.id}"
       # And I see a form to add an actor to this movie
-      expect(page).to have_form("Add Actor")
+      expect(page).to have_field("Add actor")
       # When I fill in the form with the ID of an actor that exists in the database
-      fill_in "Add Actor", with: @actor_6.id
+      fill_in "Add actor", with: @actor_6.id
       # And I click submit
       click_button "Submit"
       # Then I am redirected back to that movie's show page
-      expect(current_path).to eq("movies/#{@movie_1.id}")
+      expect(current_path).to eq("/movies/#{@movie_1.id}")
       # And I see the actor's name is now listed
       expect(page).to have_content("Cate Blanchett")
     end

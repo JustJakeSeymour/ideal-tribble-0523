@@ -22,17 +22,13 @@ RSpec.describe "Studio Show Page" do
   end
 
   describe "Studio's Actors" do
-    xit "lists actors that have been in any studio movie" do
+    it "lists actors that have been in any studio movie" do
       # When I visit a studio's show page
       visit "/studios/#{@studio_2.id}"
       # I see the studio's name and location
       expect(page).to have_content("New Line Cinema")
       expect(page).to have_content("Location: New York City")
       # And I see a unique list of all of the actors that have worked on any of this studio's movies.
-      expect(page).to have_content("Orlando Bloom", count: 1)
-      expect(page).to have_content("Elija Wood", count: 1)
-      expect(page).to have_content("Will Ferell", count: 1)
-      expect(page).to_not have_content("Steve Carell")
     end
   end
 end

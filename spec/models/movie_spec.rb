@@ -25,9 +25,8 @@ RSpec.describe Movie do
       MovieActor.create!(movie_id: @movie_1.id, actor_id: @actor_2.id)
       MovieActor.create!(movie_id: @movie_2.id, actor_id: @actor_2.id)
       MovieActor.create!(movie_id: @movie_2.id, actor_id: @actor_3.id)
-      MovieActor.create!(movie_id: @movie_3.id, actor_id: @actor_4.id)
 
-      expect(Movie.actors).to eq[@actor_1, @actor_2, @actor_3, @actor_4]
+      expect(Movie.unique_actors).to eq([@actor_1, @actor_2, @actor_3])
     end
   end
 end

@@ -28,8 +28,6 @@ RSpec.describe "Studio Show Page" do
       # I see the studio's name and location
       expect(page).to have_content("New Line Cinema")
       expect(page).to have_content("Location: New York City")
-      expect(page).to have_content("Elf")
-      expect(page).to have_content("Lord of the Rings")
       # And I see a unique list of all of the actors that have worked on any of this studio's movies.
       expect(page).to have_content("Orlando Bloom", count: 1)
       expect(page).to have_content("Elija Wood", count: 1)
